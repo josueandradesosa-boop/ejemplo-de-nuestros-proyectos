@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa Aurum | Barbería Profesional</title>
+<meta name="description" content="Barbería de alto nivel: cortes, barba y rituales de cuidado masculino.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== 1. Variables y base ===== */
+:root{
+  --bg:#121212; --bg2:#1a1a1a; --gold:#D4AF37; --bronze:#C5A059;
+  --text:#f4f1ea; --muted:#b4b0a8; --line:rgba(212,175,55,.28);
+  --glass:rgba(255,255,255,.04); --radius:6px;
+  --serif:'Playfair Display',serif; --display:'Cinzel',serif; --sans:'Montserrat',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{width:min(1160px,92%);margin:0 auto}
+section{padding:110px 0}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15}
+h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:14px}
+.lead{color:var(--muted);max-width:56ch}
+.head{margin-bottom:56px}
+.rule{width:64px;height:1px;background:var(--gold);margin:18px 0 22px}
+
+/* ===== 2. Botones ===== */
+.btn{display:inline-block;padding:14px 30px;border:1px solid var(--gold);color:var(--gold);font:500 .8rem var(--sans);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;background:transparent;border-radius:2px;transition:.35s}
+.btn:hover{background:var(--gold);color:#121212;box-shadow:0 10px 30px rgba(212,175,55,.25);transform:translateY(-2px)}
+.btn.solid{background:linear-gradient(135deg,var(--gold),var(--bronze));color:#121212}
+.btn.solid:hover{filter:brightness(1.1)}
+
+/* ===== 3. Header ===== */
+header{position:fixed;inset:0 0 auto 0;z-index:50;transition:.4s;border-bottom:1px solid transparent}
+header.scrolled{background:rgba(18,18,18,.88);backdrop-filter:blur(14px);border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{font-family:var(--display);font-size:1.35rem;letter-spacing:.18em;color:var(--gold);font-weight:700}
+.menu{display:flex;gap:34px;align-items:center;list-style:none}
+.menu a{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:.3s;position:relative}
+.menu a:not(.btn):hover{color:var(--gold)}
+.menu .btn{padding:10px 22px;color:var(--gold)}
+.menu .btn:hover{color:#121212}
+.burger{display:none;background:none;border:0;width:30px;height:22px;position:relative;cursor:pointer}
+.burger span{position:absolute;left:0;width:100%;height:1.5px;background:var(--gold);transition:.35s}
+.burger span:nth-child(1){top:0}.burger span:nth-child(2){top:10px}.burger span:nth-child(3){top:20px}
+.burger.open span:nth-child(1){top:10px;transform:rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){top:10px;transform:rotate(-45deg)}
+
+/* ===== 4. Hero ===== */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative;
+  background:radial-gradient(ellipse at 80% 20%,rgba(212,175,55,.16),transparent 55%),
+             radial-gradient(ellipse at 10% 90%,rgba(197,160,89,.08),transparent 50%),#0d0d0d}
+.hero::after{content:"";position:absolute;right:8%;top:14%;bottom:14%;width:1px;background:linear-gradient(transparent,var(--gold),transparent);opacity:.5}
+.hero h1{font-size:clamp(2.6rem,7vw,5.6rem);max-width:15ch;margin-bottom:26px}
+.hero h1 em{color:var(--gold)}
+.hero p{max-width:50ch;color:var(--muted);font-size:1.05rem;margin-bottom:40px}
+.cta{display:flex;gap:16px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:44px;margin-top:70px;flex-wrap:wrap}
+.hero-meta b{display:block;font-family:var(--display);font-size:1.6rem;color:var(--gold)}
+.hero-meta span{font-size:.8rem;color:var(--muted)}
+
+/* ===== 5. Sobre nosotros ===== */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-img{position:relative}
+.about-img img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.4) contrast(1.05);border-radius:var(--radius)}
+.about-img::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--gold);border-radius:var(--radius);z-index:-1}
+.about p{color:var(--muted);margin-bottom:18px}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.pillars div{border-top:1px solid var(--line);padding-top:14px;font-size:.88rem}
+.pillars strong{display:block;font-family:var(--serif);font-weight:500;font-size:1.05rem;color:var(--gold)}
+
+/* ===== 6. Servicios ===== */
+.services{background:var(--bg2)}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.card{background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;backdrop-filter:blur(10px);box-shadow:0 18px 40px rgba(0,0,0,.35);transition:.4s}
+.card:hover{transform:translateY(-6px);border-color:var(--gold)}
+.card h3{font-size:1.4rem;margin-bottom:10px}
+.card p{color:var(--muted);font-size:.9rem;margin-bottom:22px;min-height:68px}
+.price{font-family:var(--display);color:var(--gold);font-size:1.7rem}
+.price small{font-family:var(--sans);font-size:.75rem;color:var(--muted);margin-left:6px}
+.card.featured{background:linear-gradient(160deg,rgba(212,175,55,.14),rgba(255,255,255,.03));border-color:var(--gold)}
+.tag{display:inline-block;font-size:.7rem;letter-spacing:.1em;color:#121212;background:var(--gold);padding:3px 10px;margin-bottom:14px;border-radius:2px}
+
+/* ===== 7. Galería ===== */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:240px;gap:14px}
+.gallery figure{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid var(--line)}
+.gallery figure:nth-child(1),.gallery figure:nth-child(6){grid-row:span 2}
+.gallery img{width:100%;height:100%;object-fit:cover;filter:grayscale(.6);transition:.7s}
+.gallery figcaption{position:absolute;inset:auto 0 0 0;padding:26px 18px 16px;background:linear-gradient(transparent,rgba(0,0,0,.9));font-family:var(--serif);color:var(--gold);transform:translateY(100%);transition:.45s}
+.gallery figure:hover img{transform:scale(1.08);filter:grayscale(0)}
+.gallery figure:hover figcaption{transform:none}
+
+/* ===== 8. Reseñas ===== */
+.reviews{background:var(--bg2)}
+.quote{font-family:var(--serif);font-style:italic;font-size:1.08rem;margin-bottom:22px;color:var(--text)}
+.who{display:flex;align-items:center;gap:12px;font-size:.85rem;color:var(--muted)}
+.who i{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--bronze));display:grid;place-items:center;color:#121212;font:600 .9rem var(--sans);font-style:normal}
+.stars{color:var(--gold);letter-spacing:3px;margin-bottom:14px}
+
+/* ===== 9. Ubicación ===== */
+.loc{display:grid;grid-template-columns:1fr 1.2fr;gap:40px}
+.info{display:grid;gap:26px;align-content:start}
+.info h3{font-size:1.2rem;color:var(--gold);margin-bottom:6px}
+.info p,.info li{color:var(--muted);font-size:.92rem}
+.info ul{list-style:none}
+.info li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:6px 0;max-width:340px}
+.map{min-height:380px;border:1px solid var(--line);border-radius:var(--radius);position:relative;overflow:hidden;background:#161616}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;left:52%;top:46%;transform:translate(-50%,-100%);text-align:center}
+.pin b{display:block;width:22px;height:22px;margin:0 auto 6px;border-radius:50% 50% 50% 0;background:var(--gold);transform:rotate(-45deg);box-shadow:0 0 0 8px rgba(212,175,55,.2);animation:pulse 2.4s infinite}
+.pin span{background:rgba(18,18,18,.9);border:1px solid var(--gold);padding:4px 12px;font-size:.75rem;color:var(--gold);white-space:nowrap}
+@keyframes pulse{50%{box-shadow:0 0 0 16px rgba(212,175,55,0)}}
+
+/* ===== 10. Footer ===== */
+footer{border-top:1px solid var(--line);padding:56px 0 30px;background:#0d0d0d}
+.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:36px}
+.foot ul{list-style:none;display:flex;gap:26px;flex-wrap:wrap}
+.foot a{color:var(--muted);font-size:.85rem;transition:.3s}
+.foot a:hover{color:var(--gold)}
+.copy{text-align:center;color:#7d7a74;font-size:.78rem}
+
+/* ===== 11. Modal de reserva ===== */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px;opacity:0;visibility:hidden;transition:.35s}
+.modal.open{opacity:1;visibility:visible}
+.box{width:min(520px,100%);max-height:92vh;overflow:auto;background:#181818;border:1px solid var(--gold);border-radius:var(--radius);padding:38px 34px;position:relative;transform:translateY(24px) scale(.97);transition:.4s}
+.modal.open .box{transform:none}
+.close{position:absolute;top:14px;right:18px;background:none;border:0;color:var(--muted);font-size:1.8rem;cursor:pointer;transition:.3s}
+.close:hover{color:var(--gold)}
+.box h3{font-size:1.8rem;margin-bottom:6px}
+.box>p{color:var(--muted);font-size:.9rem;margin-bottom:24px}
+label{display:block;font-size:.75rem;letter-spacing:.08em;color:var(--bronze);margin:14px 0 6px}
+input,select{width:100%;padding:12px 14px;background:#101010;border:1px solid rgba(255,255,255,.14);border-radius:3px;color:var(--text);font:300 .95rem var(--sans);transition:.3s;color-scheme:dark}
+input:focus,select:focus{outline:0;border-color:var(--gold)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.box .btn{width:100%;margin-top:26px}
+.ok{display:none;text-align:center;padding:20px 0}
+.ok h3{color:var(--gold)}
+.sent form{display:none}.sent .ok{display:block}.sent .intro{display:none}
+
+/* ===== 12. Animaciones de scroll ===== */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+
+/* ===== 13. Responsive ===== */
+@media(max-width:900px){
+  section{padding:80px 0}
+  .about,.loc{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px}
+  .gallery figure:nth-child(6){grid-row:span 1}
+  .hero::after{display:none}
+  .burger{display:block}
+  .menu{position:fixed;inset:76px 0 auto 0;flex-direction:column;gap:0;background:rgba(18,18,18,.97);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .5s}
+  .menu.open{max-height:480px}
+  .menu li{width:100%;text-align:center;padding:16px}
+}
+@media(max-width:520px){.row,.pillars{grid-template-columns:1fr}.box{padding:32px 22px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="top">
+  <div class="wrap nav">
+    <a href="#inicio" class="logo">CASA AURUM</a>
+    <button class="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="menu">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#resenas">Reseñas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><button class="btn" data-open>Reservar cita</button></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<!-- ===== HERO ===== -->
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <h1 class="reveal">El arte del cuidado masculino de alto nivel</h1>
+    <p class="reveal d1">Cortes precisos, barba esculpida y rituales de toalla caliente en un salón privado. Cada visita es una cita, no un turno.</p>
+    <div class="cta reveal d2">
+      <button class="btn solid" data-open>Reservar cita</button>
+      <a href="#servicios" class="btn">Ver servicios</a>
+    </div>
+    <div class="hero-meta reveal d3">
+      <div><b>15+</b><span>años de oficio</span></div>
+      <div><b>6</b><span>maestros barberos</span></div>
+      <div><b>4.9</b><span>valoración media</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOBRE NOSOTROS ===== -->
+<section id="nosotros">
+  <div class="wrap about">
+    <div class="about-img reveal">
+      <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&q=80" alt="Barbero trabajando con navaja en el salón" loading="lazy">
+    </div>
+    <div class="reveal d1">
+      <h2>Tradición clásica, ejecución moderna</h2>
+      <div class="rule"></div>
+      <p>Casa Aurum nació para devolverle a la barbería su ceremonia. Combinamos técnicas de navaja de la vieja escuela con herramientas y productos de hoy, en un ambiente tranquilo, con cuero, madera oscura y whisky de cortesía.</p>
+      <p>Aquí se atiende solo con cita, para que su tiempo sea completamente suyo.</p>
+      <div class="pillars">
+        <div><strong>Maestría</strong>Barberos con formación continua.</div>
+        <div><strong>Privacidad</strong>Cabinas y sillones reservados.</div>
+        <div><strong>Producto</strong>Línea artesanal y sin parabenos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICIOS Y TARIFAS ===== -->
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2>Servicios y tarifas</h2>
+      <div class="rule"></div>
+      <p class="lead">Precios en dólares. Todos los servicios incluyen consulta de estilo y bebida de cortesía.</p>
+    </div>
+    <div class="grid4">
+      <article class="card reveal"><h3>Corte de autor</h3><p>Corte a tijera o máquina, lavado, secado y peinado con acabado de salón.</p><div class="price">$35<small>45 min</small></div></article>
+      <article class="card reveal d1"><h3>Barba y navaja</h3><p>Perfilado, toalla caliente, afeitado a navaja y aceite hidratante.</p><div class="price">$28<small>30 min</small></div></article>
+      <article class="card reveal d2"><h3>Tratamiento facial</h3><p>Limpieza profunda, exfoliación y mascarilla para pieles masculinas.</p><div class="price">$45<small>40 min</small></div></article>
+      <article class="card featured reveal d3"><span class="tag">Más pedido</span><h3>Ritual Aurum</h3><p>Corte, barba a navaja y facial express. La experiencia completa.</p><div class="price">$85<small>1 h 45 min</small></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALERÍA ===== -->
+<section id="galeria">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2>Nuestro estilo</h2>
+      <div class="rule"></div>
+      <p class="lead">Una selección de trabajos recientes y rincones del salón.</p>
+    </div>
+    <div class="gallery reveal">
+      <figure><img loading="lazy" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&q=80" alt="Corte clásico con navaja"><figcaption>Navaja clásica</figcaption></figure>
+      <figure><img loading="lazy" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=700&q=80" alt="Degradado moderno"><figcaption>Degradado limpio</figcaption></figure>
+      <figure><img loading="lazy" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=700&q=80" alt="Barba perfilada"><figcaption>Barba esculpida</figcaption></figure>
+      <figure><img loading="lazy" src="https://images.unsplash.com/photo-1532710093739-9470acff878f?auto=format&fit=crop&w=700&q=80" alt="Herramientas de barbero"><figcaption>Herramientas de oficio</figcaption></figure>
+      <figure><img loading="lazy" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=700&q=80" alt="Corte a tijera"><figcaption>Tijera de precisión</figcaption></figure>
+      <figure><img loading="lazy" src="https://images.unsplash.com/photo-1567894340315-735d7c361db0?auto=format&fit=crop&w=700&q=80" alt="Interior del salón"><figcaption>El salón</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESEÑAS ===== -->
+<section class="reviews" id="resenas">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="grid4" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+      <blockquote class="card reveal"><div class="stars">★★★★★</div><p class="quote" style="min-height:0">"El mejor afeitado que he tenido. Salí renovado y con una atención que no había visto en ninguna otra barbería."</p><div class="who"><i>R</i>Ricardo M.</div></blockquote>
+      <blockquote class="card reveal d1"><div class="stars">★★★★★</div><p class="quote" style="min-height:0">"Puntuales, silenciosos cuando hace falta y de una precisión impecable. El Ritual Aurum vale cada centavo."</p><div class="who"><i>A</i>Andrés L.</div></blockquote>
+      <blockquote class="card reveal d2"><div class="stars">★★★★★</div><p class="quote" style="min-height:0">"Llevé a mi hijo y a mi padre. Los tres salimos felices. El ambiente es otro nivel."</p><div class="who"><i>J</i>Javier P.</div></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===== UBICACIÓN Y HORARIOS ===== -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="head reveal">
+      <h2>Ubicación y horarios</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="loc">
+      <div class="info reveal">
+        <div><h3>Dirección</h3><p>Calle Principal 123, Local 4<br>Zona Centro, Ciudad</p></div>
+        <div><h3>Contacto</h3><p>Tel: +00 (000) 000-0000<br>hola@casaaurum.com</p></div>
+        <div><h3>Horario</h3>
+          <ul>
+            <li><span>Lunes a viernes</span><span>9:00 – 20:00</span></li>
+            <li><span>Sábado</span><span>9:00 – 18:00</span></li>
+            <li><span>Domingo</span><span>Cerrado</span></li>
+          </ul>
+        </div>
+        <div><button class="btn solid" data-open>Reservar cita</button></div>
+      </div>
+      <!-- Mapa simulado en SVG: reemplazar por un iframe de Google Maps si lo desea -->
+      <div class="map reveal d1" role="img" aria-label="Mapa simulado de la ubicación de Casa Aurum">
+        <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#2c2c2c" stroke-width="10">
+          <path d="M-20 90H620M-20 210H620M-20 320H620M110-20V420M300-20V420M480-20V420"/>
+          <path d="M-20 150L620 270M200-20L420 420" stroke-width="5"/>
+          <path d="M300 210H480V320" stroke="#D4AF37" stroke-opacity=".6" stroke-width="3" stroke-dasharray="8 8"/>
+          <rect x="330" y="230" width="110" height="60" stroke="#3a3a3a" stroke-width="2" fill="#1e1e1e"/>
+        </svg>
+        <div class="pin"><b></b><span>Casa Aurum</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="#inicio" class="logo">CASA AURUM</a>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">TikTok</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Políticas de cancelación</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Tarjetas de regalo</a></li>
+      </ul>
+    </div>
+    <p class="copy">© <span id="year"></span> Casa Aurum Barbería. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- ===== MODAL DE RESERVA ===== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
+  <div class="box" id="box">
+    <button class="close" aria-label="Cerrar">&times;</button>
+    <div class="intro"><h3 id="mt">Reserve su cita</h3><p>Complete los datos y confirmaremos por mensaje en menos de una hora.</p></div>
+    <form id="form">
+      <label for="n">Nombre completo</label><input id="n" required placeholder="Su nombre">
+      <label for="t">Teléfono</label><input id="t" type="tel" required placeholder="+00 000 000 0000">
+      <label for="s">Servicio</label>
+      <select id="s"><option>Corte de autor – $35</option><option>Barba y navaja – $28</option><option>Tratamiento facial – $45</option><option selected>Ritual Aurum – $85</option></select>
+      <div class="row">
+        <div><label for="d">Fecha</label><input id="d" type="date" required></div>
+        <div><label for="h">Hora</label><select id="h"><option>09:00</option><option>11:00</option><option>13:00</option><option>15:00</option><option>17:00</option><option>19:00</option></select></div>
+      </div>
+      <button class="btn solid" type="submit">Confirmar reserva</button>
+    </form>
+    <div class="ok"><h3>Solicitud enviada</h3><p id="okmsg" style="color:var(--muted)"></p><button class="btn" type="button" id="okclose" style="margin-top:20px">Cerrar</button></div>
+  </div>
+</div>
+
+<script>
+/* ===== Header: fondo al hacer scroll ===== */
+const header=document.querySelector('header');
+const onScroll=()=>header.classList.toggle('scrolled',scrollY>40);
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* ===== Menú hamburguesa ===== */
+const burger=document.querySelector('.burger'),menu=document.querySelector('.menu');
+const toggleMenu=(open)=>{menu.classList.toggle('open',open);burger.classList.toggle('open',open);burger.setAttribute('aria-expanded',open)};
+burger.addEventListener('click',()=>toggleMenu(!menu.classList.contains('open')));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+
+/* ===== Animaciones de entrada (IntersectionObserver) ===== */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===== Modal de reserva ===== */
+const modal=document.getElementById('modal'),box=document.getElementById('box'),form=document.getElementById('form');
+const openModal=()=>{toggleMenu(false);box.classList.remove('sent');modal.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('n').focus(),300)};
+const closeModal=()=>{modal.classList.remove('open');document.body.style.overflow=''};
+document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',openModal));
+document.querySelector('.close').addEventListener('click',closeModal);
+document.getElementById('okclose').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.getElementById('d').min=new Date().toISOString().split('T')[0];
+
+/* Simulación de envío: aquí iría la llamada a su servidor o servicio de reservas */
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const nombre=document.getElementById('n').value.split(' ')[0];
+  document.getElementById('okmsg').textContent=`Gracias, ${nombre}. Le escribiremos para confirmar su ${document.getElementById('s').value.split(' –')[0]} el ${document.getElementById('d').value} a las ${document.getElementById('h').value}.`;
+  box.classList.add('sent');form.reset();
+});
+
+/* ===== Año del footer ===== */
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
